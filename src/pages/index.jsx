@@ -1,4 +1,11 @@
-export { Faq } from "./Home/components/Faq";
-export { Hero } from "./Home/components/Hero";
+// export { Faq } from "./Home/components/Faq";
+// export { Hero } from "./Home/components/Hero";
+// export { Testimonials } from "./Home/components/Testimonials";
 export { HomePage } from "./Home/HomePage";
-export { Testimonials } from "./Home/components/Testimonials";
+export { CartPage } from "./Cart/CartPage";
+export { DashboardPage } from "./DashBoard/DashboardPage";
+export { ProductList } from "./Products/ProductList";
+export { OrderPage } from "./Order/OrderPage";
+export { Login } from "./Login";
+export { Register } from "./Register";
+export { Page404 } from "./Page404";
