@@ -9,6 +9,7 @@ import {
   Register,
   Page404,
   ProductList,
+  ProductDetail,
 } from "../pages";
 export const AllRoutes = () => {
   return (
@@ -18,6 +19,7 @@ export const AllRoutes = () => {
       <Route path="/dashboard" element={<DashboardPage />} />
       <Route path="/order" element={<OrderPage />} />
       <Route path="/products" element={<ProductList />} />
+      <Route path="/products/:id" element={<ProductDetail />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="*" element={<Page404 />} />

@@ -1,15 +1,26 @@
-import React, { useState } from "react";
 import { ProductCard } from "./components/ProductCard";
+import axios from "axios";
 import { ProductFilterBar } from "./components/ProductFilterBar";
-
+import { useEffect, useState } from "react";
 export const ProductList = () => {
   const [openDrop, setOpenDrop] = useState(false);
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    axios
+      .get("http://localhost:8000/products")
+      .then((response) => {
+        setProducts(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [products]);
   return (
     <main>
       <section className="my-5">
         <div className="my-5 flex justify-between">
           <span className="text-2xl font-semibold dark:text-slate-100 mb-5">
-            All eBooks (15)
+            All eBooks ({products.length})
           </span>
           <span>
             <button
@@ -33,7 +44,9 @@ export const ProductList = () => {
         </div>
 
         <div className="flex flex-wrap justify-center lg:flex-row">
-          <ProductCard />
+          {products.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
         </div>
       </section>
       {openDrop && (
