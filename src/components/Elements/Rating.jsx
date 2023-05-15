@@ -7,11 +7,17 @@ export const Rating = ({ rating }) => {
   }
   return (
     <>
-      {ratingArray.map((value) =>
+      {ratingArray.map((value, index) =>
         value ? (
-          <i className="text-lg bi bi-star-fill text-yellow-500 mr-1"></i>
+          <i
+            key={index}
+            className="text-lg bi bi-star-fill text-yellow-500 mr-1"
+          ></i>
         ) : (
-          <i className="text-lg bi bi-star text-yellow-500 mr-1"></i>
+          <i
+            key={index}
+            className="text-lg bi bi-star text-yellow-500 mr-1"
+          ></i>
         )
       )}
     </>
