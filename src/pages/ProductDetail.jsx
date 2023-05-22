@@ -2,9 +2,11 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { Rating } from "../components/Elements/Rating";
+import { useTitle } from "../hook/useTitle";
 export const ProductDetail = () => {
-  const [singleProduct, setSingleProduct] = useState([]);
-  const params = useParams();
+  const [singleProduct, setSingleProduct] = useState({});
+  const { id } = useParams();
   const {
     name,
     long_description,
@@ -16,16 +18,17 @@ export const ProductDetail = () => {
     rating,
     poster,
   } = singleProduct;
+  useTitle(`${name}`);
   useEffect(() => {
     axios
-      .get(`http://localhost:8000/products/${params.id}`)
+      .get(`http://localhost:8000/products/${id}`)
       .then((response) => {
         setSingleProduct(response.data);
       })
       .catch((error) => {
         console.log(error);
       });
-  }, [params.id]);
+  }, [id]);
   return (
     <main>
       <section>
@@ -45,13 +48,7 @@ export const ProductDetail = () => {
               <span className="">{price}</span>
             </p>
             <p className="my-3">
-              <span>
-                <i className="text-lg bi bi-star-fill text-yellow-500 mr-1"></i>
-                <i className="text-lg bi bi-star-fill text-yellow-500 mr-1"></i>
-                <i className="text-lg bi bi-star-fill text-yellow-500 mr-1"></i>
-                <i className="text-lg bi bi-star-fill text-yellow-500 mr-1"></i>
-                <i className="text-lg bi bi-star text-yellow-500 mr-1"></i>
-              </span>
+              <Rating rating={rating} />
             </p>
             <p className="my-4 select-none">
               {best_seller && (

@@ -1,5 +1,7 @@
 import React from "react";
-
+import { CartEmpty } from "./components/CartEmpty";
+import { CartList } from "./components/CartList";
 export const CartPage = () => {
-  return <main>CartPage</main>;
+  const CartListLength = 2;
+  return <main>{CartListLength ? <CartList /> : <CartEmpty />}</main>;
 };

@@ -1,4 +1,7 @@
+import { useFilter } from "../../../context";
+
 export const ProductFilterBar = ({ setOpenDrop }) => {
+  const { state, dispatch } = useFilter();
   return (
     <section className="filter">
       <div
@@ -44,6 +47,13 @@ export const ProductFilterBar = ({ setOpenDrop }) => {
               <p className="font-semibold my-1">Sort by</p>
               <div className="flex items-center my-1">
                 <input
+                  onChange={() =>
+                    dispatch({
+                      type: "SORT_BY",
+                      payload: { sortBy: "lowtohigh" },
+                    })
+                  }
+                  checked={state.sortBy === "lowtohigh" || false}
                   id="price-sort-1"
                   type="radio"
                   value=""
@@ -59,6 +69,13 @@ export const ProductFilterBar = ({ setOpenDrop }) => {
               </div>
               <div className="flex items-center my-1">
                 <input
+                  onChange={() =>
+                    dispatch({
+                      type: "SORT_BY",
+                      payload: { sortBy: "hightolow" },
+                    })
+                  }
+                  checked={state.sortBy === "hightolow" || false}
                   id="price-sort-2"
                   type="radio"
                   value=""
@@ -77,6 +94,13 @@ export const ProductFilterBar = ({ setOpenDrop }) => {
               <span className="font-semibold">Rating</span>
               <div className="flex items-center my-1">
                 <input
+                  onChange={() =>
+                    dispatch({
+                      type: "RATINGS",
+                      payload: { ratings: "4STARTSABOVE" },
+                    })
+                  }
+                  checked={state.ratings === "4STARTSABOVE" || false}
                   id="rating-sort-1"
                   type="radio"
                   value=""
@@ -92,6 +116,13 @@ export const ProductFilterBar = ({ setOpenDrop }) => {
               </div>
               <div className="flex items-center my-1">
                 <input
+                  onChange={() =>
+                    dispatch({
+                      type: "RATINGS",
+                      payload: { ratings: "3STARTSABOVE" },
+                    })
+                  }
+                  checked={state.ratings === "3STARTSABOVE" || false}
                   id="rating-sort-2"
                   type="radio"
                   value=""
@@ -107,6 +138,13 @@ export const ProductFilterBar = ({ setOpenDrop }) => {
               </div>
               <div className="flex items-center my-1">
                 <input
+                  onChange={() =>
+                    dispatch({
+                      type: "RATINGS",
+                      payload: { ratings: "2STARTSABOVE" },
+                    })
+                  }
+                  checked={state.ratings === "2STARTSABOVE" || false}
                   id="rating-sort-3"
                   type="radio"
                   value=""
@@ -122,6 +160,13 @@ export const ProductFilterBar = ({ setOpenDrop }) => {
               </div>
               <div className="flex items-center my-1">
                 <input
+                  onChange={() =>
+                    dispatch({
+                      type: "RATINGS",
+                      payload: { ratings: "1STARTSABOVE" },
+                    })
+                  }
+                  checked={state.ratings === "1STARTSABOVE" || false}
                   id="rating-sort-4"
                   type="radio"
                   value=""
@@ -140,8 +185,15 @@ export const ProductFilterBar = ({ setOpenDrop }) => {
               <span className="font-semibold">Other Filters</span>
               <div className="flex items-center my-1">
                 <input
+                  onChange={() =>
+                    dispatch({
+                      type: "BEST_SELLER_ONLY",
+                      payload: { bestSellerOnly: !state.bestSellerOnly },
+                    })
+                  }
                   id="best-seller"
                   type="checkbox"
+                  checked={state.bestSellerOnly || false}
                   value=""
                   className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 dark:bg-gray-700 dark:border-gray-600"
                 />
@@ -154,6 +206,13 @@ export const ProductFilterBar = ({ setOpenDrop }) => {
               </div>
               <div className="flex items-center my-1">
                 <input
+                  onChange={() =>
+                    dispatch({
+                      type: "ONLY_IN_STOCK",
+                      payload: { onlyInStock: !state.onlyInStock },
+                    })
+                  }
+                  checked={state.onlyInStock || false}
                   id="only-instock"
                   type="checkbox"
                   value=""
@@ -169,6 +228,11 @@ export const ProductFilterBar = ({ setOpenDrop }) => {
             </li>
             <li className="mt-1 mb-5 px-1">
               <button
+                onClick={() =>
+                  dispatch({
+                    type: "CLEAR_FILTER",
+                  })
+                }
                 type="button"
                 className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-10 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
               >

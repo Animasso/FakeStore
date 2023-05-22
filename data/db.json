@@ -238,5 +238,114 @@
     }
   ],
   "orders": [],
-  "users": []
+  "users": [
+    {
+      "email": "dvfninf@gmail.com",
+      "password": "$2a$10$oWDj9YzZSxIk3vc2dPUoe.RBuo2Pp1aQg7hLOlBKWLqN51Y4pE2Ca",
+      "name": "doekoeo",
+      "id": 1
+    },
+    {
+      "email": "asidibe@gmail.com",
+      "password": "$2a$10$i9u3eZIBQK3AL0lpvSlDNeVVziLWdUmZ5wy22UbkdWVNyKXz0PwI6",
+      "name": "Animasso",
+      "id": 2
+    },
+    {
+      "email": "gdodoe@gmail.com",
+      "password": "$2a$10$QGpF70taHi0fGSl/.GZp2eNNlVZA9FHWTEE.2YkwKaXAjrVICeGSG",
+      "name": "jonana",
+      "id": 3
+    },
+    {
+      "email": "johntoto@gmail.com",
+      "password": "$2a$10$PYot2gpM9VlaYsAoBYTj2uF.joFRQw3.uKv56UZ5dRs9l3l9VS1z6",
+      "name": "toto",
+      "id": 4
+    },
+    {
+      "email": "johndoe@gmail.com",
+      "password": "$2a$10$eNjvFLvv3z/SFeGWxKDTwuG6qwwKqfWwspF7qMjkD.m7SzEgIWIUG",
+      "name": "soka",
+      "id": 5
+    },
+    {
+      "email": "johndoepo@gmail.com",
+      "password": "$2a$10$xss47zPRXfE2HO9HDhkWSO1JoUrPk0M8EJ8CBqdomaOPK/i6lwlqC",
+      "name": "john",
+      "id": 6
+    },
+    {
+      "email": "hoho@gmail.com",
+      "password": "$2a$10$tezGDRy8zUs1aiE9GV4tFehMx/t1Ga3zx0PXWeh9UjiZ20RHh.Jjq",
+      "name": "hoho",
+      "id": 7
+    },
+    {
+      "email": "coco@gmail.com",
+      "password": "$2a$10$jsuXt957y4s2GVBbhLHH6.Ep8kk5q2lPv2Ju470PzPpjSW/Q09vuy",
+      "name": "coco",
+      "id": 8
+    },
+    {
+      "email": "bobobob@gmail.com",
+      "password": "$2a$10$Kj/inojlgELG9RspTg28w.MkC1BW8ZlOnyXqP/E6pVmn/bK5KIn5q",
+      "name": "bobo",
+      "id": 9
+    },
+    {
+      "email": "jojo@gmail.com",
+      "password": "$2a$10$4v1tUyLb0IQuFJYaLhzqpeYdlW.YD9OKv/iLvYNHVQxWYQHsvI0TG",
+      "name": "jojo",
+      "id": 10
+    },
+    {
+      "email": "gogog@gmail.com",
+      "password": "$2a$10$yRPT.hRO1VvGmplOtICjvOMOl4JgFQ/A/QPo4k5whw1lsLZA7jrza",
+      "name": "gogog",
+      "id": 11
+    },
+    {
+      "email": "lolo@gmail.com",
+      "password": "$2a$10$UDrGuDjxqvsdyzClcFhhpe7DfIWOELngubu7pBO5nFRvLCZ1wMPy.",
+      "name": "lolo",
+      "id": 12
+    },
+    {
+      "email": "sokceok@gmail.com",
+      "password": "$2a$10$dzu4hxQIA7rCz/qDXIUOsOCtgUl1LO/UMk8g4t6KrEMuceXW8vbAu",
+      "name": "qpdpkd",
+      "id": 13
+    },
+    {
+      "email": "lpmppm@gmail.com",
+      "password": "$2a$10$Ve2n0NUNQoF/nbHNJkop/u0b0C9OV33CE.k/4hmDtDRit8BAB2a7C",
+      "name": "injpjp,",
+      "id": 14
+    },
+    {
+      "email": "colp@gmail.com",
+      "password": "$2a$10$ujkBdq6L978LW.mBLxH9ROoyyJhIS21/7CEmGtVYDLIOJUVNy3.n.",
+      "name": "beml",
+      "id": 15
+    },
+    {
+      "email": "loppo@gmail.com",
+      "password": "$2a$10$b87nRsOPdbex7DxBsnmfzeg/dhoQs4mjJe3WxcrphV4lFPvA9fVZO",
+      "name": "zedl",
+      "id": 16
+    },
+    {
+      "email": "soso@gmail.com",
+      "password": "$2a$10$qRKx3RJq2nCape.RHK4yMeDN5Gj2SukesWyGkUnPCYCJbTBWFs.SC",
+      "name": "Animasso",
+      "id": 17
+    },
+    {
+      "email": "sukuna@gmail.com",
+      "password": "$2a$10$p18veziLXYPRDLBzG77w3uwNbhzO/tr0J5UFVjBHm001C7Q4DGZWq",
+      "name": "sukuna",
+      "id": 18
+    }
+  ]
 }

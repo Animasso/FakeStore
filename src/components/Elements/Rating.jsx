@@ -23,3 +23,35 @@ export const Rating = ({ rating }) => {
     </>
   );
 };
+// systeme de notation
+// export const Rating = ({ rating }) => {
+//     const [ratingArray, setRatingArray] = useState(Array(5).fill(false));
+
+//     const handleStarClick = (index) => {
+//       const newRatingArray = [...ratingArray];
+//       for (let i = 0; i < newRatingArray.length; i++) {
+//         newRatingArray[i] = i < index;
+//       }
+//       setRatingArray(newRatingArray);
+//     };
+
+//     return (
+//       <>
+//         {ratingArray.map((value, index) =>
+//           value ? (
+//             <i
+//               key={index}
+//               className="text-lg bi bi-star-fill text-yellow-500 mr-1"
+//               onClick={() => handleStarClick(index)}
+//             ></i>
+//           ) : (
+//             <i
+//               key={index}
+//               className="text-lg bi bi-star text-yellow-500 mr-1"
+//               onClick={() => handleStarClick(index)}
+//             ></i>
+//           )
+//         )}
+//       </>
+//     );
+//   };

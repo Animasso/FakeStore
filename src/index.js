@@ -3,12 +3,33 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
-
+import { ScrollToTop } from "./components/Others/ScrollToTop";
+import { FilterProvider } from "./context";
+import { ToastContainer } from "react-toastify";
+import { CartProvider } from "./context";
+import "react-toastify/dist/ReactToastify.css";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <CartProvider>
+        <FilterProvider>
+          <ScrollToTop />
+          <ToastContainer
+            position="top-left"
+            autoClose={2000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="colored"
+          />
+          <App />
+        </FilterProvider>
+      </CartProvider>
     </BrowserRouter>
   </React.StrictMode>
 );

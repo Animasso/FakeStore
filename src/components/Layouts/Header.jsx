@@ -1,7 +1,24 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Logo from "../../assets/logo.png";
+import { Search } from "../Sections/Search";
+import { DropdownLoggedIn, DropdownLoggedOut } from "../index";
+
 export const Header = () => {
+  const token = JSON.parse(sessionStorage.getItem("token"));
+  const [darkMode, setDarkMode] = useState(
+    JSON.parse(localStorage.getItem("darkMode")) || false
+  );
+  const [dropdown, setDropdown] = useState(false);
+  useEffect(() => {
+    if (darkMode) {
+      localStorage.setItem("darkMode", JSON.stringify(darkMode));
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [darkMode]);
+  const [searchBar, setSearchBar] = useState(false);
   return (
     <header>
       <nav className="bg-white dark:bg-gray-900">
@@ -14,8 +31,14 @@ export const Header = () => {
             </span>
           </Link>
           <div className="flex items-center relative">
-            <span className="cursor-pointer text-xl text-gray-700 dark:text-white mr-5 bi bi-gear-fill"></span>
-            <span className="cursor-pointer text-xl text-gray-700 dark:text-white mr-5 bi bi-search"></span>
+            <span
+              onClick={() => setDarkMode(!darkMode)}
+              className="cursor-pointer text-xl text-gray-700 dark:text-white mr-5 bi bi-gear-fill"
+            ></span>
+            <span
+              onClick={() => setSearchBar(!searchBar)}
+              className="cursor-pointer text-xl text-gray-700 dark:text-white mr-5 bi bi-search"
+            ></span>
             <Link to="/cart" className="text-gray-700 dark:text-white mr-5">
               <span className="text-2xl bi bi-cart-fill relative">
                 <span className="text-white text-sm absolute -top-1 left-2.5 bg-rose-500 px-1 rounded-full ">
@@ -23,10 +46,20 @@ export const Header = () => {
                 </span>
               </span>
             </Link>
-            <span className="bi bi-person-circle cursor-pointer text-2xl text-gray-700 dark:text-white"></span>
+            <span
+              onClick={() => setDropdown(!dropdown)}
+              className="bi bi-person-circle cursor-pointer text-2xl text-gray-700 dark:text-white"
+            ></span>
+            {dropdown &&
+              (token ? (
+                <DropdownLoggedIn setDropdown={setDropdown} />
+              ) : (
+                <DropdownLoggedOut setDropdown={setDropdown} />
+              ))}
           </div>
         </div>
       </nav>
+      {searchBar && <Search setSearchBar={setSearchBar} />}
     </header>
   );
 };

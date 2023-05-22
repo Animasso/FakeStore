@@ -2,19 +2,35 @@ import { ProductCard } from "./components/ProductCard";
 import axios from "axios";
 import { ProductFilterBar } from "./components/ProductFilterBar";
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
+import { useTitle } from "../../hook/useTitle";
+
+import { useFilter } from "../../context";
+
 export const ProductList = () => {
+  const { products, initialProductList } = useFilter();
+
   const [openDrop, setOpenDrop] = useState(false);
-  const [products, setProducts] = useState([]);
+  // const [products, setProducts] = useState([]);
+  const search = useLocation().search;
+  const searchTerm = new URLSearchParams(search).get("q");
+
+  useTitle("Explore our book collection");
   useEffect(() => {
     axios
-      .get("http://localhost:8000/products")
+      .get(
+        `http://localhost:8000/products?name_like=${
+          searchTerm ? searchTerm : ""
+        }`
+      )
       .then((response) => {
-        setProducts(response.data);
+        initialProductList(response.data);
       })
       .catch((error) => {
         console.log(error);
       });
-  }, [products]);
+    // eslint-disable-next-line
+  }, [searchTerm]);
   return (
     <main>
       <section className="my-5">
@@ -44,7 +60,7 @@ export const ProductList = () => {
         </div>
 
         <div className="flex flex-wrap justify-center lg:flex-row">
-          {products.map((product) => (
+          {products?.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>
