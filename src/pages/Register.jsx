@@ -1,11 +1,13 @@
 import React from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-// import axios from "axios";
+
 import { useNavigate } from "react-router-dom";
+import { useTitle } from "../hook/useTitle";
+import { register } from "../services";
 export const Register = () => {
-  // const notify = () => toast("Email deja enregistré");
   let navigate = useNavigate();
+  useTitle("Register Page");
   async function handleRegister(e) {
     e.preventDefault();
     const authDetails = {
@@ -13,22 +15,8 @@ export const Register = () => {
       email: e.target.email.value,
       password: e.target.password.value,
     };
-
-    const requestOptions = {
-      method: "POST",
-      headers: { "content-Type": "application/json" },
-      body: JSON.stringify(authDetails),
-    };
-    const response = await fetch(
-      "http://localhost:8000/register",
-      requestOptions
-    );
-    const data = await response.json();
+    const data = await register(authDetails);
     data.accessToken ? navigate("/products") : toast.error(data);
-    data.accessToken &&
-      sessionStorage.setItem("token", JSON.stringify(data.accessToken));
-    sessionStorage.setItem("cbid", JSON.stringify(data.user.id));
-    console.log("data:", data);
   }
 
   return (

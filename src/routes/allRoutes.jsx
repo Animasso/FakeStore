@@ -13,6 +13,7 @@ import {
   ProductList,
   ProductDetail,
 } from "../pages";
+import { ProtectedRoutes } from "./ProtectedRoutes";
 export const AllRoutes = () => {
   // const location = useLocation();
 
@@ -22,12 +23,32 @@ export const AllRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
-      <Route path="/cart" element={<CartPage />} />
-      <Route path="/dashboard" element={<DashboardPage />} />
-      <Route path="/order" element={<OrderPage />} />
+      <Route
+        path="/cart"
+        element={
+          <ProtectedRoutes>
+            <CartPage />
+          </ProtectedRoutes>
+        }
+      />
+      <Route
+        path="/dashboard"
+        element={
+          <ProtectedRoutes>
+            <DashboardPage />
+          </ProtectedRoutes>
+        }
+      />
+      <Route
+        path="/order"
+        element={
+          <ProtectedRoutes>
+            <OrderPage />
+          </ProtectedRoutes>
+        }
+      />
       <Route path="/products" element={<ProductList />} />
       <Route path="/products/:id" element={<ProductDetail />} />
-      <Route path="/cart" element={<CartPage />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="*" element={<Page404 />} />

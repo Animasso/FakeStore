@@ -1,8 +1,24 @@
 import { Link } from "react-router-dom";
 import { Rating } from "../../../components/Elements/Rating";
+import { useCart } from "../../../context";
+import { useState, useEffect } from "react";
 
 export const ProductCard = ({ product }) => {
-  const { id, rating, name, overview, poster, price, best_seller } = product;
+  const { id, rating, name, overview, poster, price, best_seller, in_stock } =
+    product;
+  const { cartlist, addToCart, removeFromCart } = useCart();
+  const [inCart, setInCart] = useState(false);
+  useEffect(() => {
+    const productInCart = cartlist.find((item) => item.id === product.id);
+    if (productInCart) {
+      setInCart(true);
+    } else {
+      setInCart(false);
+    }
+  }, [cartlist, product.id]);
+  const handleClick = (product) => {
+    addToCart(product);
+  };
   return (
     <div className="m-3 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
       <Link to={`/products/${id}`} className="relative">
@@ -15,7 +31,7 @@ export const ProductCard = ({ product }) => {
         <img className="rounded-t-lg w-full h-64" src={poster} alt="" />
       </Link>
       <div className="p-5">
-        <Link to={`products/${id}`}>
+        <Link to={`/products/${id}`}>
           <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
             {name}
           </h5>
@@ -33,10 +49,24 @@ export const ProductCard = ({ product }) => {
             <span>$</span>
             <span>{price}</span>
           </span>
-          <button className="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800">
-            Add To Cart <i className="ml-1 bi bi-plus-lg"></i>
-          </button>
-          {/* <button className="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-red-600 rounded-lg hover:bg-red-800">Remove Item <i className="ml-1 bi bi-trash3"></i></button> */}
+          {inCart ? (
+            <button
+              onClick={() => removeFromCart(product)}
+              className="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-red-600 rounded-lg hover:bg-red-800"
+            >
+              Remove Item <i className="ml-1 bi bi-trash3"></i>
+            </button>
+          ) : (
+            <button
+              onClick={() => handleClick(product)}
+              className={`inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 ${
+                !in_stock && "cursor-not-allowed"
+              }`}
+              disabled={!in_stock}
+            >
+              Add To Cart <i className="ml-1 bi bi-plus-lg"></i>
+            </button>
+          )}
         </p>
       </div>
     </div>
